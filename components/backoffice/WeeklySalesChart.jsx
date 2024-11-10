@@ -1,5 +1,4 @@
 "use client";
-import { LineElement } from "chart.js";
 import React, { useState } from "react";
 
 import {
@@ -7,6 +6,7 @@ import {
   CategoryScale,
   LinearScale,
   PointElement,
+  LineElement,
   Title,
   Tooltip,
   Legend,
@@ -31,8 +31,8 @@ export default function WeeklySalesChart() {
         position: "top",
       },
       title: {
-        display: true,
-        text: "Weekly Sales",
+        display: false,
+        text: "Line Chart",
       },
     },
   };
@@ -56,23 +56,23 @@ export default function WeeklySalesChart() {
           {
             label: "Sales",
             data: labels.map(() => faker.number.int({ min: -1000, max: 1000 })),
-            borderColor: "rgb(22, 101, 52)",
-            backgroundColor: "rgb(22, 163, 74)",
+            borderColor: "rgb(255, 99, 132)",
+            backgroundColor: "rgba(255, 99, 132, 0.5)",
           },
         ],
       },
     },
     {
-      title: "Orders",
-      type: "orders",
+      title: "Games",
+      type: "games",
       data: {
         labels,
         datasets: [
           {
-            label: "Orders",
+            label: "Games",
             data: labels.map(() => faker.number.int({ min: -1000, max: 1000 })),
-            borderColor: "rgb(30, 64, 175)",
-            backgroundColor: "rgb(37, 99, 235)",
+            borderColor: "rgb(53, 162, 235)",
+            backgroundColor: "rgba(53, 162, 235, 0.5)",
           },
         ],
       },
@@ -80,21 +80,23 @@ export default function WeeklySalesChart() {
   ];
   const [chartToBeDisplayed, setChartToBeDisplayed] = useState(tabs[0].type);
   return (
-    <div className="bg-slate-700 p-8 rounded-lg">
-      <h2 className="text-xl font-bold mb-4">Weekly Sales</h2>
+    <div className="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+      <p className="mb-4 font-semibold text-gray-800 dark:text-gray-300">
+        Weekly Chart
+      </p>
       <div className="p-4">
         {/* Tabs */}
-        <div className="text-sm font-medium text-center text-gray-200 border-b border-gray-400 dark:text-gray-400 dark:border-gray-700">
+        <div className="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 mb-4">
           <ul className="flex flex-wrap -mb-px">
             {tabs.map((tabs, index) => {
               return (
-                <li className="me-2" key={index}>
+                <li className="mr-2" key={index}>
                   <button
                     onClick={() => setChartToBeDisplayed(tabs.type)}
                     className={
                       chartToBeDisplayed == tabs.type
-                        ? "inline-block p-4 text-orange-600 border-b-2 border-orange-600 rounded-t-lg active dark:text-orange-500 dark:border-orange-500"
-                        : "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-300 hover:border-gray-100 dark:hover:text-gray-100"
+                        ? "inline-block p-2 rounded-t-lg border-b-2 border-transparent text-amber-600 border-amber-600 dark:text-amber-500 dark:border-amber-500  focus:outline-none"
+                        : "inline-block p-2 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300  focus:outline-none"
                     }>
                     {tabs.title}
                   </button>

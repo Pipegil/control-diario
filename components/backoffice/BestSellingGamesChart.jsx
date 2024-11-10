@@ -30,12 +30,12 @@ export default function BestSellingGames() {
     ],
   };
   return (
-    <div className="bg-slate-700 p-8 rounded-lg">
-      <h2 className="text-xl font-bold mb-4">Best Selling Games</h2>
+    <div className="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+      <p className="mb-4 font-semibold text-gray-800 dark:text-gray-300">
+        Best Selling Games
+      </p>
       {/* Chart */}
-      <div className="p-4">
-        <Pie data={data} />
-      </div>
+      <Pie data={data} />
     </div>
   );
 }

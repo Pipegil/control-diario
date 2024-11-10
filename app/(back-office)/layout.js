@@ -4,16 +4,16 @@ import React from "react";
 
 export default function Layout({ children }) {
   return (
-    <div className="flex">
+    <div className="flex h-screen bg-gray-50 dark:bg-gray-900 overflow-hidden">
       {/* Sidebar */}
       <Sidebar />
-      <div className="w-full">
-        {/* Header */}
+      <div className="">
+        {/* Navbar */}
         <Navbar />
-        <main className="ml-60 p-8 bg-slate-900 text-slate-50 min-h-screen mt-16">
+        {/* Main */}
+        <main className="h-full overflow-y-auto">
           {children}
         </main>
-        {/* Main */}
       </div>
       {/* Main Body */}
     </div>

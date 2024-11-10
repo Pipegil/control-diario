@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import data from "../../data.json";
 
-export default function CustomDataTable() {
+export default function RecentGamesTable() {
   const arr = [1, 2, 3, 4, 5];
   const PAGE_SIZE = 10;
   const [currentPage, setCurrentPage] = useState(1);
@@ -13,11 +13,13 @@ export default function CustomDataTable() {
   const displayedItemsStartIndex = startIndex + 1;
   const displayedItemsEndIndex = Math.min(startIndex + PAGE_SIZE, data.length);
   return (
-    <div className="">
-      <h2 className="text-xl font-bold mb-4">Recent Games</h2>
+    <>
+      <h1 className="my-6 text-lg font-bold text-gray-700 dark:text-gray-300">
+        Recent Games
+      </h1>
       {/* Table */}
-      <div className="p-8">
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <div className="w-full overflow-hidden border border-gray-200 dark:border-gray-700 rounded-lg mb-20">
+        <div className="w-full overflow-x-auto">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
@@ -100,56 +102,56 @@ export default function CustomDataTable() {
               })}
             </tbody>
           </table>
-          <nav
-            className="flex items-center flex-column flex-wrap md:flex-row justify-between p-4"
-            aria-label="Table navigation">
-            <span className="text-md font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">
-              Showing{" "}
-              <span className="font-semibold text-gray-50 dark:text-white">
-                {displayedItemsStartIndex}-{displayedItemsEndIndex}
-              </span>{" "}
-              of{" "}
-              <span className="font-semibold text-gray-50 dark:text-white">
-                {data.length}
-              </span>
-            </span>
-            <ul className="inline-flex -space-x-px rtl:space-x-reverse text-sm h-14">
-              <li>
-                <button
-                  onClick={() => setCurrentPage(currentPage - 1)}
-                  disabled={currentPage === 1}
-                  className="flex items-center justify-center px-3 h-10 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                  Previous
-                </button>
-              </li>
-              {Array.from({ length: numberOfAvailablePages }, (_, index) => {
-                return (
-                  <li key={index}>
-                    <button
-                      onClick={() => setCurrentPage(index + 1)}
-                      disabled={currentPage === index + 1}
-                      className={
-                        currentPage === index + 1
-                          ? "flex items-center justify-center px-3 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                          : "flex items-center justify-center px-3 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                      }>
-                      {index + 1}
-                    </button>
-                  </li>
-                );
-              })}
-              <li>
-                <button
-                  onClick={() => setCurrentPage(currentPage + 1)}
-                  disabled={currentPage === numberOfAvailablePages}
-                  className="flex items-center justify-center px-3 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                  Next
-                </button>
-              </li>
-            </ul>
-          </nav>
         </div>
+        <nav
+          className="flex items-center flex-column flex-wrap md:flex-row justify-between p-4"
+          aria-label="Table navigation">
+          <span className="text-md font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">
+            Showing{" "}
+            <span className="font-semibold text-gray-50 dark:text-white">
+              {displayedItemsStartIndex}-{displayedItemsEndIndex}
+            </span>{" "}
+            of{" "}
+            <span className="font-semibold text-gray-50 dark:text-white">
+              {data.length}
+            </span>
+          </span>
+          <ul className="inline-flex -space-x-px rtl:space-x-reverse text-sm h-14">
+            <li>
+              <button
+                onClick={() => setCurrentPage(currentPage - 1)}
+                disabled={currentPage === 1}
+                className="flex items-center justify-center px-3 h-10 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                Previous
+              </button>
+            </li>
+            {Array.from({ length: numberOfAvailablePages }, (_, index) => {
+              return (
+                <li key={index}>
+                  <button
+                    onClick={() => setCurrentPage(index + 1)}
+                    disabled={currentPage === index + 1}
+                    className={
+                      currentPage === index + 1
+                        ? "flex items-center justify-center px-3 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                        : "flex items-center justify-center px-3 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                    }>
+                    {index + 1}
+                  </button>
+                </li>
+              );
+            })}
+            <li>
+              <button
+                onClick={() => setCurrentPage(currentPage + 1)}
+                disabled={currentPage === numberOfAvailablePages}
+                className="flex items-center justify-center px-3 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                Next
+              </button>
+            </li>
+          </ul>
+        </nav>
       </div>
-    </div>
+    </>
   );
 }
